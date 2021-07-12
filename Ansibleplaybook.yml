@@ -1,0 +1,48 @@
+---
+- name: hostssss
+  hosts: webserver3
+  tasks:
+
+    - name: TEXTO IMPORTANTE
+      ansible.builtin.debug:
+        msg: crear este archivo y aprender como usar ansible , fue el peor dolor de cabeza que tuve desde hace mucho tiempo con algun sistema , asi que , ahi va mi scrip
+
+    - name: install opnjdk
+      apt:
+        name: openjdk-8-jdk
+        state: latest
+        install_recommends: no
+    - name: install zip and unzip
+      apt:
+        name: zip
+        state: latest
+        install_recommends: no
+
+    - name: install zip and unzip
+      apt:
+        name: unzip
+        state: latest
+        install_recommends: no
+
+    - name: create a directorio maeZtro
+      file:
+        path: muleRuntime
+        state: directory
+
+    - name: unzip source file Babyyy
+      unarchive:
+        src: https://objectstorage.us-ashburn-1.oraclecloud.com/n/id4beafwqb9e/b/Public-Bucket/o/mulezipmule-ee-distribution-standalone-4.3.0-20210119.zip
+        dest: muleRuntime
+        remote_src: yes
+        validate_certs: no
+
+    - name:  config Mule Runtime sv
+      command: muleRuntime/mule-enterprise-standalone-4.3.0-20210119/bin/amc_setup -H 0130bb01-494e-4671-b44b-34880da7d4b3---531714 testing1
+
+    - name:  start mule runtime SV
+      command: muleRuntime/mule-enterprise-standalone-4.3.0-20210119/bin/mule start
+
+#    - name:  start mule runtime SV
+#      command: muleRuntime/mule-enterprise-standalone-4.3.0-20210119/bin/mule stop
+
+    
